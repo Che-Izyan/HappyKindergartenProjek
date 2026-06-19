@@ -58,6 +58,6 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation(platform(libs.supabase.bom))
     implementation(libs.supabase.postgrest)
-    implementation(libs.ktor.client)
-    implementation("io.ktor:ktor-client-android:3.4.3")
+    implementation(libs.supabase.auth)
+    implementation("io.ktor:ktor-client-android")
 }

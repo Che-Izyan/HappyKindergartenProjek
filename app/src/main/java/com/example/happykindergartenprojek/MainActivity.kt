@@ -22,6 +22,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -81,6 +82,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             HappyKindergartenProjekTheme {
+                LaunchedEffect(Unit) {
+                    try {
+                        val result = SupabaseProvider.client.postgrest["students"].select()
+                        println("SupabaseTest: Success!")
+                    } catch (e: Exception) {
+                        println("SupabaseTest: Failed: ${e.message}")
+                    }
+                }
                 KindergartenApp()
             }
         }
